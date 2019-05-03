@@ -1,12 +1,23 @@
 import matplotlib.pyplot as plt
 # open the pure sequence file and read the sequence
-File = open("C:/Users/User/Dropbox (MIT)/pureseq.txt", "r")
-Seq = File.read()
+localdir = input("Please enter the dir of file here: ")
+File = open(localdir, "r")
+GenbankFile = File.read()
+print("GenbankFile is", GenbankFile)
+# Using ORIGIN as the identifier
+SeqFile = GenbankFile.split("ORIGIN")[-1]
+print("SeqFile is", SeqFile)
+Seq = []
+for letter in SeqFile:
+    if letter in ["a", "t", "c", "g"]:
+        Seq += letter
+Seq = ''.join(Seq)
+
 # Seq = "attttagcgcgt"
 
 # choose the successive number(how many successive a and t together)
 # AT hotpoint criteria: how many a and t appear contuniously. Record the start point from which a and t appear successively
-sn = int(input("Please enter the successive number"))
+sn = int(input("Please enter the successive number: "))
 print(Seq)
 # count: record the starting point
 count = []
